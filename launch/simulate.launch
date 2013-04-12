@@ -1,22 +1,17 @@
 <launch>
 
-	<node pkg="xsens_driver" type="mtnode.py" name="mtnode">
-		<param name="device" value="/dev/ttyUSB0" />
-		<param name="baudrate" value="115200" />
-		<param name="frame_id" value="base_footprint" />
-	</node>
 
 	<!--https://github.com/eemmyy23/odom_covariance-->
 	<include file="$(find odom_covariance)/launch/covariance.launch" />
-
+	
+	<!--
 	<node pkg="gps_common" type="utm_odometry_node" name="utm_odometry_node">
 		<param name="rot_covariance" value="99999" />
-		<param name="frame_id" value="base_footprint" />
-		
-		<!--<remap from="fix" to="fix" />-->
+		<param name="frame_id" value="base_footprint" />	
 		<remap from="odom" to="gpsOdom" />
 	</node>
-
+	-->
+	
 	<node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
 		<param name="output_frame" value="odom_combined"/>
 		<param name="freq" value="30"/>
