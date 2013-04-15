@@ -9,9 +9,15 @@
 		<param name="posY" value="0.1" />
 		<param name="rotZ" value="0.1" />
 
-
+<!--
 		<param name="frame_id" type="string" value="/odom_combined" />
 		<param name="child_frame_id" type="string" value="/encoders_base_link" />
-
+-->
 	</node>
+<!--
+	<node pkg="tf" type="static_transform_publisher" 
+		name="imu_broadcaster" 
+		args="0 0 0.3 0 0 0 /odom /base_link 100"
+	 />
+-->
 </launch>
