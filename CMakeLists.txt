@@ -29,3 +29,5 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 rosbuild_add_executable(odom_covariance_node src/odom_covariance_node.cpp)
+rosbuild_add_executable(imu_tf_broadcaster src/imu_tf_broadcaster.cpp)
+
