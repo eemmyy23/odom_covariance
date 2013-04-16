@@ -1,0 +1,32 @@
+<launch>
+
+	<include file="$(find robotV1)/launch/robotV1.launch" />
+
+	<node pkg="odom_covariance" type="odom_covariance_node" name="odom_covariance_node" output="screen">
+		<remap from="inputOdom" to="RosAria/pose" />
+		<remap from="outputOdom" to="pioneerOdom" />
+		
+		<param name="changeCov" value="true" />
+		<param name="posX" value="0.1" />
+		<param name="posY" value="0.1" />
+		<param name="rotZ" value="0.1" />
+
+	</node>
+	
+	<node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+		<param name="output_frame" value="odom_combined"/>
+		<param name="freq" value="60"/>
+		<param name="sensor_timeout" value="0.001"/>  
+		<param name="odom_used" value="true"/>
+		<param name="imu_used" value="true"/>
+		<param name="vo_used" value="false"/>
+		<param name="debug" value="true"/>
+		<param name="self_diagnose" value="true"/>
+		
+		<remap from="odom" to="pioneerOdom" />
+		<remap from="imu_data" to="imu/data" />
+		<remap from="vo" to="gpsOdom" />
+	</node>
+
+</launch>
+

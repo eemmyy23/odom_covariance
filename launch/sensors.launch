@@ -1,14 +1,42 @@
 <launch>
-
+<!--
 	<node pkg="xsens_driver" type="mtnode.py" name="mtnode">
 		<param name="device" value="/dev/ttyUSB0" />
 		<param name="baudrate" value="115200" />
 		<param name="frame_id" value="/base_imu" />
 	</node>
-<!--
-	<node pkg="tf" type="static_transform_publisher" 
-		name="imu_broadcaster" 
-		args="0 0 0.5 0 0 0 /base_link /base_imu 100"
-	 />
+ 
+	<node pkg="odom_covariance" type="imu_tf_broadcaster" name="imu_tf_broadcaster" />
+-->		 	
+	 <!-- <include file="$(find velodyne_pointcloud)/launch/32e_points.launch" /> -->
+
+
+  <!-- declare arguments with default values -->
+  <arg name="pcap" default="" />
+  <arg name="calibration" default="$(find velodyne_pointcloud)/params/32db.yaml"/>
+
+  <!-- start nodelet manager and driver nodelets -->
+  <include file="$(find velodyne_driver)/launch/nodelet_manager.launch">
+    <arg name="model" value="32E"/>
+    <arg name="pcap" value="$(arg pcap)"/>
+  </include>
+
+  <!-- start cloud nodelet -->
+  <include file="$(find velodyne_pointcloud)/launch/cloud_nodelet.launch">
+    <arg name="calibration" value="$(arg calibration)"/>
+  </include>
+
+
+  <!-- start heightmap nodelet
+  <include file="$(find velodyne_height_map)/launch/heightmap_nodelet.launch"/>
+ -->
+
+<!--	
+	<param name="/use_sim_time" type="bool" value="true" />
 -->
+	<node pkg="tf" type="static_transform_publisher"
+		name="velodyne_tf"
+  		args="0 0 0.75 -1.57 0 0 /base_link /velodyne 1"
+	/>                <!--0.75-->
+
 </launch>

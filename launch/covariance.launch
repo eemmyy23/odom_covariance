@@ -20,4 +20,12 @@
 		args="0 0 0.3 0 0 0 /odom /base_link 100"
 	 />
 -->
+
+	<!--
+	<node pkg="gps_common" type="utm_odometry_node" name="utm_odometry_node">
+		<param name="rot_covariance" value="99999" />
+		<param name="frame_id" value="base_footprint" />	
+		<remap from="odom" to="gpsOdom" />
+	</node>
+	-->
 </launch>
