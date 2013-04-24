@@ -10,9 +10,8 @@
   <url>http://ros.org/wiki/odom_covariance</url>
   <depend package="roscpp" />
   <depend package="nav_msgs" />
-  <depend package="tf"/>
   <depend package="sensor_msgs" />
-
+  <depend package="tf" />
 </package>
 
 
