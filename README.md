@@ -1,4 +1,4 @@
-This package is useful for testing IMU performances
+ This package is useful for testing IMU performances
 Example of launcher file
 
 	<launch>
