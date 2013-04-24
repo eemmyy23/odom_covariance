@@ -1,0 +1,13 @@
+<!-- -*- mode: XML -*- -->
+<!-- run velodyne_height_map/HeightMapNodelet in a nodelet manager
+
+     $Id: heightmap_nodelet.launch 2088 2012-02-23 15:49:14Z jack.oquin $
+  -->
+
+<launch>
+  <node pkg="nodelet" type="nodelet" name="heightmap_nodelet" output="screen"
+        args="load velodyne_height_map/HeightMapNodelet velodyne_nodelet_manager"/>
+	<param name="grid_dimensions" value="960" /> 
+	<param name="height_threshold" value="2" />
+	<param name="cell_size" value="0.01" />
+</launch>
