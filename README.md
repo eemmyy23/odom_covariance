@@ -1,5 +1,4 @@
-This package is useful for rewriting the covariance matrix.
-
+This package is useful for testing IMU performances
 Example of launcher file
 
 	<launch>
